@@ -1,0 +1,48 @@
+﻿@model List<ResumeProjectDemo.Entities.Testimonial>
+
+<section class="position-relative py-10 py-lg-15 bg-dark overflow-hidden" style="min-height: 600px;">
+    @* Arka Plan Düzenlemesi *@
+    <div class="overlay">
+        <div class="overlay-inner bg-image-holder bg-cover bg-center">
+            <img src="/images/1.jpg" alt="background" style="object-fit: cover; width: 100%; height: 100%;">
+        </div>
+        <div class="overlay-inner bg-black opacity-70"></div>
+    </div>
+
+    <div class="container position-relative z-index-1">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center text-white">
+
+                @* Slider tetikleyici sınıfı: testimonial-carousel *@
+                <div class="testimonial-carousel dots-light">
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="testimonial-item">
+                            <div class="icon icon-lg mb-4 text-primary">
+                                <i class="fa fa-quote-right fa-2x"></i>
+                            </div>
+
+                            <blockquote class="blockquote border-0">
+                                <p class="mb-5 fs-4 fw-light italic">"@item.CommentDetail"</p>
+
+                                <div class="d-flex justify-content-center align-items-center mt-4">
+                                    <div class="avatar me-3">
+                                        <img src="@item.ImageUrl" alt="@item.NameSurname"
+                                             class="rounded-circle border border-2 border-primary"
+                                             style="width:65px; height:65px; object-fit:cover;">
+                                    </div>
+                                    <div class="text-start">
+                                        <h4 class="h6 mb-0 text-white fw-bold">@item.NameSurname</h4>
+                                        <small class="text-primary opacity-75">@item.TitleAndCompany</small>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,124 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Developer Portfolio Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex">
+
+    <aside class="w-64 flex-shrink-0 bg-white dark:bg-[#111618] border-r border-slate-200 dark:border-[#283539] flex flex-col h-screen sticky top-0">
+        <div class="p-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-background-dark font-bold text-xl">
+                JD
+            </div>
+            <div class="flex flex-col">
+                <h1 class="text-sm font-bold leading-tight">.NET Dev</h1>
+                <p class="text-xs text-slate-500 dark:text-[#9db2b9]">Admin Portal</p>
+            </div>
+        </div>
+        <nav class="flex-1 px-4 py-2 space-y-1 overflow-y-auto">
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427]" href="/Dashboard/Index">
+                <span class="material-symbols-outlined text-[22px]">dashboard</span>
+                <span class="text-sm font-medium">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427]" href="/About/Index">
+                <span class="material-symbols-outlined text-[22px]">person</span>
+                <span class="text-sm font-medium">Hakkımda</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427]" href="/Skill/SkillList">
+                <span class="material-symbols-outlined text-[22px]">psychology</span>
+                <span class="text-sm font-medium">Yeteneklerim</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427]" href="/Experience/ExperienceList">
+                <span class="material-symbols-outlined text-[22px]">history_edu</span>
+                <span class="text-sm font-medium">Deneyimlerim</span>
+            </a>            
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427]" href="/Testimonial/TestimonialList">
+                <span class="material-symbols-outlined text-[22px]">history_edu</span>
+                <span class="text-sm font-medium">Müşteri Yorumları</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427]" href="/Services/ServicesList">
+                <span class="material-symbols-outlined text-[22px]">design_services</span>
+                <span class="text-sm font-medium">Hizmetlerim</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427]" href="/Portfolio/PortfolioList">
+                <span class="material-symbols-outlined text-[22px]">folder_special</span>
+                <span class="text-sm font-medium">Projelerim</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427]" href="/Message/MessageList">
+                <span class="material-symbols-outlined text-[22px]">mail</span>
+                <span class="text-sm font-medium">Mesajlar</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark">
+        <header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-[#111618] border-b border-slate-200 dark:border-[#283539] sticky top-0 z-20">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">terminal</span>
+                <h2 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Developer Admin Panel</h2>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="relative p-2 text-slate-500 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#283539] rounded-lg transition-colors">
+                    <span class="material-symbols-outlined">mail</span>
+                    <span class="absolute top-2 right-2 w-4 h-4 bg-primary text-[10px] text-white flex items-center justify-center rounded-full font-bold border-2 border-white dark:border-[#111618]">
+                        @await Component.InvokeAsync("NewMessageCount")
+                    </span>
+                </button>
+
+                <div class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-[#283539]">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-xs font-bold">Beyza R. Kılıçaslan</p>
+                        <p class="text-[10px] text-primary">Full Stack Developer</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-slate-200 bg-cover bg-center border border-primary/30"
+                         style="background-image: url('/images/5.jpg');"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="p-8">
+            @RenderBody()
+        </div>
+
+        <div class="fixed bottom-8 right-8 lg:hidden">
+            <button class="w-14 h-14 bg-primary rounded-full shadow-lg flex items-center justify-center text-background-dark hover:scale-105 transition-transform">
+                <span class="material-symbols-outlined text-[30px]">add</span>
+            </button>
+        </div>
+    </main>
+</body>
+</html>

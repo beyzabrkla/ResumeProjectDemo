@@ -1,0 +1,73 @@
+﻿@model List<ResumeProjectDemo.Entities.Testimonial>
+@{
+    ViewData["Title"] = "Referans Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="flex-1 overflow-y-auto p-8">
+    <div class="max-w-6xl mx-auto space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h3 class="text-3xl font-black tracking-tight">Referans Listesi</h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Müşterilerinizden gelen geri bildirimleri yönetebilirsiniz.</p>
+            </div>
+            <a href="/Testimonial/CreateTestimonial" class="flex items-center gap-2 px-5 py-2.5 bg-primary text-background-dark rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">
+                <span class="material-symbols-outlined text-[20px]">add</span>
+                Yeni Referans Ekle
+            </a>
+        </div>
+
+        <div class="bg-white dark:bg-[#111618] rounded-xl border border-slate-200 dark:border-[#3b4d54] overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 dark:bg-[#1c2427] border-b border-slate-200 dark:border-[#3b4d54]">
+                            <th class="px-6 py-4 text-xs font-bold uppercase text-slate-500 dark:text-[#9db2b9]">#</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase text-slate-500 dark:text-[#9db2b9]">Müşteri</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase text-slate-500 dark:text-[#9db2b9] text-center">Durum</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase text-slate-500 dark:text-[#9db2b9] text-right">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 dark:divide-[#3b4d54]">
+                        @foreach (var x in Model)
+                        {
+                            var rowClass = x.Status ? "" : "opacity-50";
+                            var btnClass = x.Status ? "bg-amber-500 hover:bg-amber-600" : "bg-green-500 hover:bg-green-600";
+                            var iconName = x.Status ? "visibility_off" : "visibility";
+
+                            <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors @rowClass">
+                                <td class="px-6 py-4 font-bold">@x.TestimonialId</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden flex-shrink-0">
+                                            <img src="@x.ImageUrl" class="w-full h-full object-cover" onerror="this.src='/images/default-user.png'">
+                                        </div>
+                                        <div>
+                                            <div class="font-bold text-sm">@x.NameSurname</div>
+                                            <div class="text-xs text-slate-400">@x.TitleAndCompany</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="px-2 py-1 rounded-full text-[10px] font-bold @(x.Status ? "bg-green-500/10 text-green-500" : "bg-red-500/10 text-red-500")">
+                                        @(x.Status ? "AKTİF" : "PASİF")
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex justify-end gap-2">
+                                        <a href="/Testimonial/UpdateTestimonial/@x.TestimonialId" class="p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors shadow-sm">
+                                            <span class="material-symbols-outlined text-sm">edit</span>
+                                        </a>
+                                        <a href="/Testimonial/ChangeStatus/@x.TestimonialId" class="p-2 text-white rounded-lg transition-colors shadow-sm @btnClass">
+                                            <span class="material-symbols-outlined text-sm">@iconName</span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,129 @@
+﻿@model ResumeProjectDemo.Entities.Message
+
+@{
+    ViewData["Title"] = "Mesaj Detayı";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    :root {
+        --bg-card: #1a2332;
+        --accent: #00d9ff;
+        --accent-purple: #7c3aed;
+        --text: #e8ecf2;
+        --text-muted: #94a3b8;
+    }
+
+    .detail-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+    }
+
+    .detail-card {
+        background: var(--bg-card);
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 2.5rem;
+    }
+
+    .detail-header {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .subject-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 1rem;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .sender-box {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .detail-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: white;
+    }
+
+    .message-content {
+        line-height: 1.8;
+        color: var(--text);
+        font-size: 1.1rem;
+        white-space: pre-line; /* Satır boşluklarını korur */
+        background: rgba(0,0,0,0.2);
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        margin-bottom: 1rem;
+        transition: color 0.2s;
+    }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+</style>
+
+<div class="detail-container">
+    <a href="@Url.Action("MessageList", "Message")" class="back-link">
+        ⬅ Mesaj Listesine Dön
+    </a>
+
+    <div class="detail-card">
+        <div class="detail-header">
+            <div class="subject-title">@Model.Subject</div>
+
+            <div class="info-row">
+                <div class="sender-box">
+                    <div class="detail-avatar">@Model.NameSurname.Substring(0, 1).ToUpper()</div>
+                    <div>
+                        <div style="font-weight: 600; color: var(--text);">@Model.NameSurname</div>
+                        <div style="font-size: 0.875rem; color: var(--text-muted);">@Model.EmailAddress</div>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="color: var(--text-muted); font-size: 0.875rem;">Gönderim Tarihi</div>
+                    <div style="color: var(--text); font-weight: 600;">@Model.SendDate.ToString("dd MMMM yyyy HH:mm")</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-content">
+            @Model.MessageDetail
+        </div>
+
+        <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+            <button class="btn btn-delete" style="padding: 0.75rem 1.5rem;" onclick="if(confirm('Bu mesajı silmek istediğinize emin misiniz?')) window.location.href='@Url.Action("Delete", "Message", new { id = Model.MessageId })'">
+                🗑 Mesajı Sil
+            </button>
+        </div>
+    </div>
+</div>

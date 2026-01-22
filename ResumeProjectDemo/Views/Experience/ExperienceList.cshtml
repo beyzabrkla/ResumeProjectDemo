@@ -1,0 +1,81 @@
+﻿@model List<ResumeProjectDemo.Entities.Experience>
+@{
+    ViewData["Title"] = "Deneyim Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="flex-1 overflow-y-auto p-8">
+    <div class="max-w-6xl mx-auto space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h3 class="text-3xl font-black tracking-tight">Deneyim Listesi</h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Deneyim içeriklerinizi düzenleyebilir, yeni deneyim ekleyebilirsiniz</p>
+            </div>
+            <a href="/Experience/CreateExperience" class="flex items-center gap-2 px-5 py-2.5 bg-primary text-background-dark rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">
+                <span class="material-symbols-outlined text-[20px]">add</span>
+                Yeni Deneyim Girişi
+            </a>
+        </div>
+
+        <div class="bg-white dark:bg-[#111618] rounded-xl border border-slate-200 dark:border-[#3b4d54] overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 dark:bg-[#1c2427] border-b border-slate-200 dark:border-[#3b4d54]">
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#9db2b9]">#</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#9db2b9]">Şirket Adı - Ünvan</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#9db2b9]">Çalışma Tarihi</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#9db2b9]">Durum</th>
+                            <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#9db2b9] text-right">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 dark:divide-[#3b4d54]">
+                        @foreach (var x in Model)
+                        {
+                            <tr class="hover:bg-slate-50/50 dark:hover:bg-white/5 transition-colors group @(x.Status ? "" : "opacity-60")">
+                                <td class="px-6 py-5 font-semibold text-sm">@x.ExperienceId</td>
+                                <td class="px-6 py-5">
+                                    <div class="font-bold text-sm">@x.Title</div>
+                                    <div class="text-xs text-slate-400 mt-1 truncate max-w-xs">@x.Description</div>
+                                </td>
+                                <td class="px-6 py-5 font-medium text-sm text-slate-600 dark:text-slate-400">@x.WorkDate</td>
+                                <td class="px-6 py-5">
+                                    @if (x.Status)
+                                    {
+                                        <span class="px-2.5 py-1 rounded-full bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-wider">Aktif</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="px-2.5 py-1 rounded-full bg-red-500/10 text-red-500 text-[10px] font-bold uppercase tracking-wider">Pasif</span>
+                                    }
+                                </td>
+                                <td class="px-6 py-5 text-right">
+                                    <div class="flex justify-end items-center gap-2">
+                                        <a href="/Experience/ChangeExperienceStatus/@x.ExperienceId"
+                                           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold text-xs transition-colors @(x.Status ? "bg-amber-500/10 text-amber-600 hover:bg-amber-500/20" : "bg-green-500/10 text-green-600 hover:bg-green-500/20")">
+                                            <span class="material-symbols-outlined text-[16px]">@(x.Status ? "visibility_off" : "visibility")</span>
+                                            @(x.Status ? "Pasife Al" : "Aktife Al")
+                                        </a>
+
+                                        <a href="/Experience/UpdateExperience/@x.ExperienceId"
+                                           class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-[#1c2427] hover:bg-slate-200 dark:hover:bg-[#283539] text-slate-700 dark:text-slate-300 rounded-lg font-bold text-xs transition-colors">
+                                            <span class="material-symbols-outlined text-[16px]">edit</span>
+                                            Güncelle
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="px-6 py-4 bg-slate-50/30 dark:bg-[#1c2427]/30 border-t border-slate-200 dark:border-[#3b4d54] flex items-center justify-between">
+                <p class="text-xs text-slate-500 dark:text-[#9db2b9]">Toplam <b>@Model.Count</b> deneyim kaydı bulunmaktadır.</p>
+                <div class="flex gap-2 text-xs font-bold text-slate-400">
+                    Sistem üzerinden içerikleri anlık olarak yönetebilirsiniz.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+﻿@model ResumeProjectDemo.Entities.Service
+@{
+    ViewData["Title"] = "Hizmet İşlemleri";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="flex-1 overflow-y-auto p-8">
+    <div class="max-w-4xl mx-auto space-y-8">
+        <div class="flex items-center gap-4">
+            <a href="/Services/ServicesList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
+                <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+            </a>
+            <div>
+                <h3 class="text-3xl font-black tracking-tight">@(Model != null && Model.ServiceId > 0 ? "Hizmeti Düzenle" : "Yeni Hizmet Ekle")</h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Sunduğunuz hizmetin detaylarını ve görünürlük durumunu belirleyin.</p>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-[#111618] rounded-xl border border-slate-200 dark:border-[#3b4d54] overflow-hidden shadow-sm">
+            <div class="p-8">
+                <form method="post" class="space-y-6">
+                    @if (Model != null && Model.ServiceId > 0)
+                    {
+                        <input type="hidden" asp-for="ServiceId" />
+                    }
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label asp-for="Title" class="block text-sm font-bold mb-2">Hizmet Başlığı</label>
+                            <input type="text" asp-for="Title" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:ring-2 focus:ring-primary/50 outline-none transition-all" placeholder="Örn: Web Geliştirme" required />
+                        </div>
+
+                        <div>
+                            <label asp-for="Status" class="block text-sm font-bold mb-2">Yayın Durumu</label>
+                            <select asp-for="Status" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:ring-2 focus:ring-primary/50 outline-none transition-all font-semibold">
+                                <option value="true">🟢 Aktif (Sitede Görünür)</option>
+                                <option value="false">🔴 Pasif (Gizli)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label asp-for="IconUrl" class="block text-sm font-bold mb-2">İkon Kodu (Material Symbol)</label>
+                        <div class="relative">
+                            <input type="text" asp-for="IconUrl" class="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:ring-2 focus:ring-primary/50 outline-none transition-all" placeholder="Örn: terminal, cloud, brush" required />
+                            <div class="absolute left-4 top-1/2 -translate-y-1/2 text-primary">
+                                <span class="material-symbols-outlined">@(string.IsNullOrEmpty(Model?.IconUrl) ? "category" : Model.IconUrl)</span>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-2 italic">Not: Kullanmak istediğiniz ikonun adını Material Symbols kütüphanesinden alıp buraya yazın.</p>
+                    </div>
+
+                    <div>
+                        <label asp-for="Description" class="block text-sm font-bold mb-2">Açıklama</label>
+                        <textarea asp-for="Description" rows="5" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none" placeholder="Hizmet hakkında kısa bilgi..."></textarea>
+                    </div>
+
+                    <div class="flex items-center gap-3 pt-6 border-t border-slate-200 dark:border-[#3b4d54]">
+                        <button type="submit" class="flex items-center gap-2 px-8 py-3 bg-primary text-background-dark rounded-lg font-bold text-sm hover:opacity-90 shadow-lg shadow-primary/10 transition-all">
+                            <span class="material-symbols-outlined text-[20px]">save</span>
+                            @(Model != null && Model.ServiceId > 0 ? "Değişiklikleri Kaydet" : "Hizmeti Ekle")
+                        </button>
+                        <a href="/Services/ServicesList/" class="px-6 py-3 bg-slate-100 dark:bg-[#1c2427] text-slate-700 dark:text-slate-300 rounded-lg font-bold text-sm hover:bg-slate-200 dark:hover:bg-[#283539] transition-colors">
+                            İptal
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

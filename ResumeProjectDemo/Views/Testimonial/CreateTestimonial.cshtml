@@ -1,0 +1,66 @@
+﻿@model ResumeProjectDemo.Entities.Testimonial
+@{
+    ViewData["Title"] = "Yeni Referans Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="flex-1 overflow-y-auto p-8">
+    <div class="max-w-4xl mx-auto space-y-8">
+        <div class="flex items-center gap-4">
+            <a href="/Testimonial/TestimonialList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
+                <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+            </a>
+            <div>
+                <h3 class="text-3xl font-black tracking-tight">Yeni Referans Ekle</h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Müşterilerinizden gelen yeni bir geri bildirimi sisteme kaydedin.</p>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-[#111618] rounded-xl border border-slate-200 dark:border-[#3b4d54] overflow-hidden shadow-sm">
+            <div class="p-8">
+                <form method="post" class="space-y-6">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label asp-for="NameSurname" class="block text-sm font-bold mb-2">Müşteri Ad Soyad</label>
+                            <input type="text" asp-for="NameSurname" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:ring-2 focus:ring-primary/50 outline-none transition-all" placeholder="Örn: Ahmet Yılmaz" required />
+                        </div>
+
+                        <div>
+                            <label asp-for="Status" class="block text-sm font-bold mb-2">Yayın Durumu</label>
+                            <select asp-for="Status" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:ring-2 focus:ring-primary/50 outline-none transition-all font-semibold">
+                                <option value="true" selected>🟢 Aktif (Sitede Görünür)</option>
+                                <option value="false">🔴 Pasif (Arşivlenmiş)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label asp-for="TitleAndCompany" class="block text-sm font-bold mb-2">Ünvan ve Şirket</label>
+                        <input type="text" asp-for="TitleAndCompany" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:ring-2 focus:ring-primary/50 outline-none transition-all" placeholder="Örn: CEO - Teknoloji A.Ş." />
+                    </div>
+
+                    <div>
+                        <label asp-for="ImageUrl" class="block text-sm font-bold mb-2">Profil Görsel URL</label>
+                        <input type="text" asp-for="ImageUrl" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:ring-2 focus:ring-primary/50 outline-none transition-all" placeholder="https://..." />
+                    </div>
+
+                    <div>
+                        <label asp-for="CommentDetail" class="block text-sm font-bold mb-2">Müşteri Yorumu</label>
+                        <textarea asp-for="CommentDetail" rows="5" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none" placeholder="Müşterinin yorumunu buraya yazınız..." required></textarea>
+                    </div>
+
+                    <div class="flex items-center gap-3 pt-6 border-t border-slate-200 dark:border-[#3b4d54]">
+                        <button type="submit" class="flex items-center gap-2 px-8 py-3 bg-primary text-background-dark rounded-lg font-bold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/10">
+                            <span class="material-symbols-outlined text-[20px]">add_circle</span>
+                            Referansı Sisteme Ekle
+                        </button>
+                        <a href="/Testimonial/TestimonialList/" class="px-6 py-3 bg-slate-100 dark:bg-[#1c2427] text-slate-700 dark:text-slate-300 rounded-lg font-bold text-sm hover:bg-slate-200 transition-colors">
+                            Vazgeç
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿@model ResumeProjectDemo.Entities.Skill
+
+@{
+    ViewData["Title"] = "Yeni Yetenek Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="flex-1 overflow-y-auto p-8">
+    <div class="max-w-4xl mx-auto space-y-8">
+        <div class="flex items-center gap-4">
+            <a href="/Skill/SkillList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
+                <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+            </a>
+            <div>
+                <h3 class="text-3xl font-black tracking-tight">
+                    @(Model != null && Model.SkillId > 0 ? "Yetenek Güncelle" : "Yeni Yetenek Ekle")
+                </h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Teknik becerilerinizi ve uzmanlık seviyenizi tanımlayın</p>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-[#111618] rounded-xl border border-slate-200 dark:border-[#3b4d54] overflow-hidden shadow-sm">
+            <div class="p-8">
+                <form method="post" class="space-y-6">
+                    @* Eğer güncelleme yapılıyorsa SkillId'yi gizli olarak göndermeliyiz *@
+                    @if (Model != null && Model.SkillId > 0)
+                    {
+                        <input type="hidden" asp-for="SkillId" />
+                    }
+
+                    <div>
+                        <label asp-for="Title" class="block text-sm font-bold mb-2">
+                            Yetenek Adı / Teknoloji
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text"
+                               asp-for="Title"
+                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                               placeholder="Örn: .NET Core, React, SQL Server"
+                               required />
+                    </div>
+
+                    <div>
+                        <label asp-for="Value" class="block text-sm font-bold mb-2">
+                            Uzmanlık Seviyesi (%)
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <input type="number"
+                                   asp-for="Value"
+                                   min="0"
+                                   max="100"
+                                   class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                                   placeholder="0 - 100 arası bir değer girin"
+                                   required />
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-slate-400">%</span>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
+                            Slider üzerinde görünecek ilerleme çubuğu yüzdesidir.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200 dark:border-[#3b4d54]">
+                        <button type="submit"
+                                class="flex items-center gap-2 px-6 py-3 bg-primary text-background-dark rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">
+                            <span class="material-symbols-outlined text-[20px]">check</span>
+                            Kaydet
+                        </button>
+                        <a href="/Skill/SkillList/"
+                           class="flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-[#1c2427] text-slate-700 dark:text-slate-300 rounded-lg font-bold text-sm hover:bg-slate-200 dark:hover:bg-[#283539] transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">close</span>
+                            İptal
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 rounded-xl p-6">
+            <div class="flex gap-3">
+                <span class="material-symbols-outlined text-amber-600 dark:text-amber-400 text-[24px]">lightbulb</span>
+                <div>
+                    <h4 class="font-bold text-amber-900 dark:text-amber-300 mb-1">İpucu</h4>
+                    <p class="text-sm text-amber-800 dark:text-amber-400">
+                        Eklediğiniz yetenekler ana sayfanızdaki "Yeteneklerim & Teknolojiler" bölümünde otomatik olarak listelenecektir.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

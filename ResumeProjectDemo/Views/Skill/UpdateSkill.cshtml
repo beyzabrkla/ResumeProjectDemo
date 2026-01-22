@@ -1,0 +1,69 @@
+﻿@model ResumeProjectDemo.Entities.Skill
+
+@{
+    ViewData["Title"] = "Yetenek Güncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="flex-1 overflow-y-auto p-8">
+    <div class="max-w-4xl mx-auto space-y-8">
+        <div class="flex items-center gap-4">
+            <a href="/Skill/SkillList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
+                <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+            </a>
+            <div>
+                <h3 class="text-3xl font-black tracking-tight">Yetenek Güncelle</h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">"<span class="font-bold">@Model.Title</span>" yeteneğini düzenliyorsunuz</p>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-[#111618] rounded-xl border border-slate-200 dark:border-[#3b4d54] overflow-hidden shadow-sm">
+            <div class="p-8">
+                <form method="post" class="space-y-6">
+                    @* SkillId gizli alan olarak mutlaka bulunmalı *@
+                    <input type="hidden" asp-for="SkillId" />
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="md:col-span-1">
+                            <label asp-for="Title" class="block text-sm font-bold mb-2">Yetenek Başlığı</label>
+                            <input type="text" asp-for="Title"
+                                   class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:ring-2 focus:ring-primary/50 outline-none transition-all"
+                                   placeholder="Örn: C#, SQL, React" required />
+                        </div>
+
+                        <div class="md:col-span-1">
+                            <label asp-for="Status" class="block text-sm font-bold mb-2">Yayın Durumu</label>
+                            <select asp-for="Status" class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:ring-2 focus:ring-primary/50 outline-none transition-all font-semibold">
+                                <option value="true">🟢 Aktif (Sitede Görünür)</option>
+                                <option value="false">🔴 Pasif (Gizli)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label asp-for="Value" class="block text-sm font-bold">Seviye (%)</label>
+                            <span class="text-xs font-black text-primary bg-primary/10 px-2 py-1 rounded">%@Model.Value</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <input type="range" asp-for="Value" min="0" max="100"
+                                   class="flex-1 h-2 bg-slate-200 dark:bg-[#3b4d54] rounded-lg appearance-none cursor-pointer accent-primary"
+                                   oninput="this.parentElement.previousElementSibling.querySelector('span').innerText = '%' + this.value" />
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-2">Kaydırıcıyı kullanarak yetenek seviyesini hızlıca belirleyebilirsiniz.</p>
+                    </div>
+
+                    <div class="flex items-center gap-3 pt-6 border-t border-slate-200 dark:border-[#3b4d54]">
+                        <button type="submit" class="flex items-center gap-2 px-8 py-3 bg-primary text-background-dark rounded-lg font-bold text-sm hover:opacity-90 shadow-lg shadow-primary/20 transition-all">
+                            <span class="material-symbols-outlined text-[20px]">save</span>
+                            Değişiklikleri Kaydet
+                        </button>
+                        <a href="/Skill/SkillList/" class="px-6 py-3 bg-slate-100 dark:bg-[#1c2427] text-slate-700 dark:text-slate-300 rounded-lg font-bold text-sm hover:bg-slate-200 dark:hover:bg-[#283539] transition-colors">
+                            İptal
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model List<ResumeProjectDemo.Entities.Portfolio>
+
+<section id="portfolio" class="py-20">
+    @* Üst Menü: Kategoriler veritabanından dinamik gelir *@
+    @await Component.InvokeAsync("_DefaultCategoriesComponentPartial")
+
+    <div class="container">
+        <div class="portfolio-container isotope-container row my-n2 mx-sm-n2">
+
+            @foreach (var x in Model)
+            {
+                @* Isotope filtrelemesi için kategori sınıfı eklendi *@
+                <div class="isotope-item col-sm-6 col-lg-4 py-2 px-sm-2 cat-@x.CategoryId">
+                    <div class="portfolio-item details-inside shadow-sm">
+                        <a href="@x.ImageUrl" class="mfp-image" title="@x.Title">
+                            <div class="item-media">
+                                <img src="@x.ImageUrl" alt="@x.Title" style="height: 250px; object-fit: cover; width: 100%;">
+                            </div>
+
+                            @* Hover olduğunda devreye giren karanlık katman *@
+                            <div class="item-overlay bg-dark opacity-80"></div>
+
+                            @* Bantlar kaldırıldı, sadece hover detayları kaldı *@
+                            <div class="item-details text-center">
+                                <h4 class="h5 text-white mb-0">@x.Title</h4>
+                                <p class="font-italic text-white-50 small mt-1">
+                                    @(x.Category != null ? x.Category.CategoryName : "Genel")
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

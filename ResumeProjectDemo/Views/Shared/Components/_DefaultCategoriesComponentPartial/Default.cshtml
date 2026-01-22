@@ -1,0 +1,47 @@
+﻿@model List<ResumeProjectDemo.Entities.Category>
+
+<div class="container">
+    <div class="row mb-8">
+        <div class="col-lg-10 col-xl-8 mx-lg-auto text-center">
+            <div class="section-title h2 mb-3">
+                <h2 class="mb-0">Portfolio</h2>
+                <span class="title-letter">P</span>
+            </div>
+            <nav class="portfolio-filter isotope-filter">
+                <ul class="justify-content-center">
+                    @* Hepsi butonu için '*' kullanılır *@
+                    <li><a href="javascript:void(0)" class="active" data-filter="*">Tüm Kategoriler</a></li>
+
+                    @foreach (var x in Model)
+                    {
+                        @* Dinamik kategori sınıfı: .cat-1, .cat-2 vb. *@
+                        <li><a href="javascript:void(0)" data-filter=".cat-@x.CategoryId">@x.CategoryName</a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Isotope'u başlat
+        var $grid = $('.isotope-container').isotope({
+            itemSelector: '.isotope-item',
+            layoutMode: 'fitRows'
+        });
+
+        // Filtre butonuna tıklandığında
+        $('.portfolio-filter ul li a').on('click', function (e) {
+            e.preventDefault();
+
+            // Aktif sınıfını değiştir
+            $('.portfolio-filter ul li a').removeClass('active');
+            $(this).addClass('active');
+
+            // Filtreleme işlemini yap
+            var filterValue = $(this).attr('data-filter');
+            $grid.isotope({ filter: filterValue });
+        });
+    });
+</script>
