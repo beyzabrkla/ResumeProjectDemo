@@ -11,6 +11,7 @@ Proje, sadece bir arayüz sunmakla kalmayıp, arkada çalışan güçlü bir yö
 -Web UI Katmanı: Tailwind CSS ve View Component tabanlı modüler arayüz.
 
 ### 🖥️Kullanılan Teknolojiler
+-Tasarım: StitchAI
 -Backend: .NET 9.0, C#, EF Core.
 -Database: MSSQL Server.
 -Frontend: Tailwind CSS, jQuery, AJAX.
