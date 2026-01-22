@@ -28,6 +28,7 @@ Yazılımın iskeleti, kod müdahalesine gerek duymadan içeriğin anlık olarak
 <img width="1917" height="902" alt="6" src="https://github.com/user-attachments/assets/9fd291e9-a0c8-407f-84c4-bba0010148ea" />
 <img width="1919" height="907" alt="7" src="https://github.com/user-attachments/assets/f95ac80a-029f-4312-b4fa-e4c3fd6c38d0" />
 
+
 ## 🛠️ Teknik Detaylar ve Sayfa Analizleri
 ### 💻 Developer Admin Dashboard & Mesaj Yönetimi
 -Projenin kalbi olan Dashboard, kullanıcıya sistemin genel sağlığı hakkında anlık istatistikler sunar.
@@ -42,13 +43,12 @@ Yazılımın iskeleti, kod müdahalesine gerek duymadan içeriğin anlık olarak
 -Bütünleşik Form Yapısı: Profil resmi URL'sinden eğitim geçmişine, deneyim özetlerinden genel açıklamalara kadar her detay bu panelden saniyeler içinde değiştirilir.
 
 <img width="1915" height="898" alt="9" src="https://github.com/user-attachments/assets/f26b515f-e057-47b9-8ca4-3f35c93f0b03" />
-
+<img width="1899" height="498" alt="10" src="https://github.com/user-attachments/assets/d3e3a610-9aeb-4236-a524-2e61e8ae1f6a" />
 
 ### 📊 Yetenek & Deneyim Envanteri
 -Teknik yetkinliklerin ve profesyonel geçmişin yönetildiği bu bölümlerde Aktif/Pasif kontrolü mevcuttur.
 -Anlık Kontrol: Bir yeteneği veya deneyimi silmek yerine "Pasife Al" seçeneği ile arayüzden gizleyebilir, veritabanında saklamaya devam edebilirsiniz.
 
-<img width="1899" height="498" alt="10" src="https://github.com/user-attachments/assets/d3e3a610-9aeb-4236-a524-2e61e8ae1f6a" />
 <img width="1919" height="895" alt="11" src="https://github.com/user-attachments/assets/8ed52213-888a-40a8-95c4-1f64bfe7bdc0" />
 
 ### 🎨 Portfolyo & Hizmet Yönetimi
