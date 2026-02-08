@@ -1,4 +1,4 @@
-# 🚀 ASP.NET Core 9.0 | Dinamik Full-Stack Portfolyo Otomasyonu
+# 🚀 ASP.NET Core 9.0 | Dinamik Full-Stack Portfolyo Otomasyonu 
 ## Proje Hakkında
 Bu çalışma, modern bir yazılım geliştiricinin ihtiyaç duyacağı tüm dijital varlıkları tek bir noktadan yönetmesini sağlayan, Entity Framework Core ve ASP.NET Core 9.0 altyapısıyla geliştirilmiş kapsamlı bir portfolyo sistemidir. 
 Proje, sadece bir arayüz sunmakla kalmayıp, arkada çalışan güçlü bir yönetim paneliyle içeriklerin dinamik olarak güncellenmesine olanak tanır.
